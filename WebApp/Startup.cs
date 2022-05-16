@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,11 @@ namespace WebApp
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            /*services.AddDbContext<LollipopDbContext>(
+                //options => options.UseSqlServer(Configuration.GetConnectionString("local_sql_lollipop")
+                options => options.UseNpgsql(Configuration.GetConnectionString("postgre_sql_lollipop")
+                
+                )) ;*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,5 +74,19 @@ namespace WebApp
                 }
             });
         }
+        string GetConnectionString()
+        {
+            List<string> dataBaseConfig = Configuration.GetSection("DataBase").Get<List<string>>();
+            string connectionString = "";
+
+            foreach (string key in dataBaseConfig)
+            {
+                connectionString += key;
+                connectionString += ";";
+            }
+    
+            return connectionString;
+        }
     }
 }
+
