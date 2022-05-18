@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Student} from "../../Models/student";
+import {HttpServiceService} from "../../Services/http-service.service";
 
 @Component({
   selector: 'app-student-create',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentCreateComponent implements OnInit {
 
-  constructor() { }
+  public newStudent: Student;
+
+  constructor(private httpService: HttpServiceService) { }
 
   ngOnInit() {
   }

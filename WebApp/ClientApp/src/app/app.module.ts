@@ -13,6 +13,10 @@ import { StudentListComponent } from './Students/student-list/student-list.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import {MatTableModule} from "@angular/material/table";
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'}]),
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
