@@ -11,6 +11,8 @@ import { StudentsComponent } from './Students/students/students.component';
 import { StudentCreateComponent } from './Students/student-create/student-create.component';
 import { StudentUpdateComponent } from './Students/student-update/student-update.component';
 import { StudentListComponent } from './Students/student-list/student-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { StudentListComponent } from './Students/student-list/student-list.compo
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MatSliderModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' }])
+      { path: '', component: HomeComponent, pathMatch: 'full' }]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
