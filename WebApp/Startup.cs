@@ -28,7 +28,7 @@ namespace WebApp
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.AddDbContext<AppDbContext>(
                 //options => options.UseSqlServer(Configuration.GetConnectionString("local_sql_lollipop")
-                options => options.UseNpgsql(Configuration.GetConnectionString(GetConnectionString())
+                options => options.UseNpgsql((GetConnectionString())
                 )) ;
         }
 
