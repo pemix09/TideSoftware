@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Student} from "../Models/student";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,9 @@ export class HttpServiceService {
 
   public GetAllStudents() : Student[]
   {
-    this.Http.get<Student[]>(this.BaseUrl + this.endPointName+'/GetAll').subscribe(result => {
+    this.Http.get<Student[]>(this.BaseUrl + this.endPointName+'/GetAll')
+      .pipe(tap(console.log))
+      .subscribe(result => {
       this.students = result;
     }, error => console.error(error));
 
@@ -38,6 +41,7 @@ export class HttpServiceService {
 
   public CreateStudent(student: Student)
   {
+    console.log(student);
     this.Http.post(this.BaseUrl+this.endPointName+'/Create/', student)
       .subscribe(() => this.status = 'Student created successfully');
   }

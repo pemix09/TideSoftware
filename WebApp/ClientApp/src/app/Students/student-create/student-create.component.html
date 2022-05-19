@@ -1,25 +1,43 @@
 <form class="example-form">
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="John">
+    <input #FirstName="ngModel" name="FirstName" [(ngModel)]="newStudent.FirstName" required minlength="2" matInput placeholder="John">
+    <!--<div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)"
+         class="alert">
+      <div *ngIf="FirstName.errors?.['required']">
+        First Name is required.
+      </div>
+      <div *ngIf="FirstName.errors?.['minlength']">
+        First Name must be at least 2 characters long.
+      </div>
+    </div>-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput placeholder="Smith">
+    <input #LastName="ngModel" name="LastName" [(ngModel)]="newStudent.LastName" required minlength="2" matInput placeholder="Smith">
+    <!--<div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)"
+         class="alert">
+      <div *ngIf="LastName.errors?.['required']">
+        Last Name is required.
+      </div>
+      <div *ngIf="LastName.errors?.['minlength']">
+        Last Name must be at least 2 characters long.
+      </div>
+    </div>-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Age</mat-label>
-    <input matInput placeholder="Computer Science">
+    <input type="number" [(ngModel)]="newStudent.Age" name="Age"  matInput placeholder="Computer Science">
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Degree</mat-label>
-    <input matInput placeholder="Computer Science">
+    <input [(ngModel)]="newStudent.Degree"  name="Degree" matInput placeholder="Computer Science">
   </mat-form-field>
 
   <mat-card-actions>
-    <button mat-raised-button type="submit" color="primary">Add Student</button>
+    <button mat-raised-button type="submit" (click)="CreateStudent()" color="primary">Add Student</button>
   </mat-card-actions>
 </form>
